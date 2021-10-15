@@ -2,15 +2,31 @@ package com.company;
 
 public class EmployeeService {
 
-    //Employee employees= new Employee();
-
     Employee[] employees;
 
-
-    void printEmployees() {
-
+    public EmployeeService(Employee[] employees) {
+        this.employees = employees;
     }
-    double calculateSalaryAndBonus(int salary)
+
+   //public EmployeeService() {   }
+
+    Employee[] printEmployees(Employee[] employees) {
+
+        for(Employee employee : employees ){
+                System.out.println("Employee{" +
+                        "id=" + employee.id +
+                        ", name='" + employee.name + '\'' +
+                        ", age=" + employee.age +
+                        ", salary=" + employee.salary +
+                        ", gender='" + employee.gender + '\'' +
+                        ", fixedBugs=" + employee.fixedBugs +
+                        '}');
+
+        }
+        return employees;
+    }
+
+    /*double calculateSalaryAndBonus(int salary){
     }
     Employee getById(long id){
 
@@ -29,4 +45,6 @@ public class EmployeeService {
     Employee remove(long id){
 
     }
+    */
+
 }

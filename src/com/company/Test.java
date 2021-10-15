@@ -31,9 +31,13 @@ public class Test {
 
     public static void main(String[] args) {
 
-        EmployeeService service = new EmployeeService();
+        EmployeeFactory employeesFactory = new EmployeeFactory();
+        Employee[] employees = employeesFactory.generateEmployees();
 
+        EmployeeService service = new EmployeeService(employees);
 
-
+        Employee[] printEmp = service.printEmployees(employees);
+       // Employee.print(employees);
     }
+
 }

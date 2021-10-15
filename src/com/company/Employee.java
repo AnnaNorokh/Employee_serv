@@ -10,8 +10,6 @@ public class Employee {
     public static final int defaultBugRate = 3;
 
 
-    public Employee(){}
-
     Employee(long id,String  name,int age,int salary,String gender,int fixedBugs) {
         this.id = id;
         this.name = name;
@@ -20,6 +18,8 @@ public class Employee {
         this.gender = gender;
         this.fixedBugs = fixedBugs;
     }
+
+    public Employee(){}
 
     public long getId() {
         return id;
@@ -69,15 +69,14 @@ public class Employee {
         this.fixedBugs = fixedBugs;
     }
 
-    public void toStringr() {
+    static void print(Employee employee) {
         System.out.println("Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", salary=" + salary +
-                ", gender='" + gender + '\'' +
-                ", fixedBugs=" + fixedBugs +
-                ", defaultBugRate=" + defaultBugRate +
+                "id=" + employee.id +
+                ", name='" + employee.name + '\'' +
+                ", age=" + employee.age +
+                ", salary=" + employee.salary +
+                ", gender='" + employee.gender + '\'' +
+                ", fixedBugs=" + employee.fixedBugs +
                 '}');
     }
 
