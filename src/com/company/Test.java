@@ -37,7 +37,21 @@ public class Test {
         EmployeeService service = new EmployeeService(employees);
 
         Employee[] printEmp = service.printEmployees(employees);
-       // Employee.print(employees);
+        Employee getName = service.getByName("Stas");
+
+        printEmployee(getName);
+
+
     }
 
+    public static void printEmployee(Employee employee) {
+        System.out.println("Employee{" +
+                "id=" +employee.id +
+                ", name='" + employee.name + '\'' +
+                ", age=" + employee.age +
+                ", salary=" + employee.salary +
+                ", gender='" + employee.gender + '\'' +
+                ", fixedBugs=" + employee.fixedBugs +
+                '}');
+    }
 }

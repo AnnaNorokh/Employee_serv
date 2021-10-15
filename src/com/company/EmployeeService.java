@@ -26,14 +26,22 @@ public class EmployeeService {
         return employees;
     }
 
+    Employee getByName(String name) {
+        for (int i = 0; i < employees.length; i++) {
+            Employee currentEmp = employees[i];
+            if(currentEmp.name == name){
+                return currentEmp;
+            }
+        }
+        return null;
+    }
+
     /*double calculateSalaryAndBonus(int salary){
     }
     Employee getById(long id){
 
     }
-    Employee[] getByName(String name) {
 
-    }
     Employee[] sortByName(Employee employee){
 
     }
