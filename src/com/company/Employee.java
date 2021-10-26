@@ -7,7 +7,8 @@ public class Employee {
     public int salary;
     public String gender;
     public int fixedBugs;
-    public static final int defaultBugRate = 3;
+    public int defaultBugRate;
+    public int bonus;
 
 
     Employee(long id,String  name,int age,int salary,String gender,int fixedBugs) {
@@ -69,6 +70,23 @@ public class Employee {
         this.fixedBugs = fixedBugs;
     }
 
+    public int getDefaultBugRate() {
+        return defaultBugRate;
+    }
+
+    public void setDefaultBugRate() {
+        this.defaultBugRate = 3;
+    }
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(int fixedBugs,int defaultBugRate) {
+        this.bonus = fixedBugs*defaultBugRate;
+    }
+
+
+
     static void print(Employee employee) {
         System.out.println("Employee{" +
                 "id=" + employee.id +
@@ -77,6 +95,7 @@ public class Employee {
                 ", salary=" + employee.salary +
                 ", gender='" + employee.gender + '\'' +
                 ", fixedBugs=" + employee.fixedBugs +
+                ", bonus=" + employee.bonus +
                 '}');
     }
 
