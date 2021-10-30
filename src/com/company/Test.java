@@ -1,48 +1,24 @@
 package com.company;
+import java.util.Scanner;
 /*
-
-Разработать класс EmployeeService который будет хранить всех сотрудников предприятия в массиве.
-Класс должен содержать методы для работы с сотрудниками (которые представлены массивом внутри класса):
-
-
-Employee[] sortByName()
-Employee[] sortByNameAndSalary() -> возвращают отсортированный массив с сотрудниками по критерию
-Employee edit(Employee) -> находит сотрудника по id, и подменяет информацию о нем на новую. Старую версию сотрудника метод возвращает.
-
-Employee remove(long id) -> находит сотрудника по id, и удаляет его из массива. Возвращает ссылку на удаленного сотрудника.
-
 
 Использовать класс Test для создания объекта EmploeeService и тестирования описаных выше методов.
 */
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         EmployeeFactory employeesFactory = new EmployeeFactory();
-        Employee[] employees2 = employeesFactory.generateEmployees();//мануал
-
         Employee[] employees = employeesFactory.generateRandEmployees(11);//генерация
 
         EmployeeService service = new EmployeeService(employees);
-
         Employee[] printEmp = service.printEmployees(employees);
 
-        //
 
-        //System.out.println();
-        //Employee[] printEmp1 = service.printEmployees(employees);
-
-
-
+        printMenu(employees);
         System.out.println();
-        Employee getId = service.getById(6);
 
-        Employee getName = service.getByName("Anna");
-        printEmployee(getName);
-        printEmployee(getId);
 
-        int allMoney = service.calculateSalaryAndBonus();
-        System.out.println("Для выплаты зараплат всм сотрудникам в этом месяце требуется - "+ allMoney+"$");
     }
 
     public static void printEmployee(Employee employee) {
@@ -55,5 +31,92 @@ public class Test {
                 ", fixedBugs=" + employee.fixedBugs +
                 ", bonus=" + employee.bonus +
                 '}');
+    }
+    public static void printMenu(Employee[] employees) {
+
+        EmployeeService service = new EmployeeService(employees);
+        Scanner scaner = new Scanner(System.in);
+        Scanner scaner2 = new Scanner(System.in);
+
+        boolean flag = true;
+
+            while (flag) {
+                System.out.println("\nМеню\n" +
+                        "1. Выбор по ID\n" +
+                        "2. Выбор по имени\n" +
+                        "3. Сортировка по имени\n" +
+                        "4. Сортировка по зарплате и имени\n" +
+                        "5. Поменять информацию о сотруднике\n" +
+                        "6. Удалить сотрудника\n"+
+                        "7. Узнать сумму денег для выплат зарплат в этом месяце"+
+                        "8. Выход");
+
+                System.out.println("Введите число:");
+                int otv= scaner.nextInt();
+
+
+            switch (otv) {
+                case 1: {
+                    System.out.println("Введите ID:");
+                    int otvID = scaner.nextInt();
+                    Employee getId = service.getById(otvID);
+                    printEmployee(getId);
+                    break;
+                }
+                case 2: {
+                    System.out.println("Введите имя:");
+                    String otvName = scaner2.nextLine();
+                    Employee getName1 = service.getByName(otvName);
+                    printEmployee(getName1);
+                    break;
+                }
+                case 3 :{
+                    System.out.println("Сортировка по имени");
+                    Employee[] SortName = service.sortByName();
+                    Employee[] print2 = service.printEmployees(SortName);
+                    break;
+            }
+
+                case 4 : {
+                    System.out.println("Сортировка по зарплате и имени");
+                    Employee[] sortNameAndSalary = service.sortByNameAndSalary();
+                    Employee[] print2 = service.printEmployees(sortNameAndSalary);
+                    break;
+                }
+
+                case 5: {
+                    System.out.println("Введите ID:");
+                    int otvID = scaner.nextInt();
+                    Employee[] getEdit = service.edit(otvID);
+                    Employee[] print2 = service.printEmployees(getEdit);
+                    break;
+                }
+
+                case 6: {
+                    System.out.println("Введите ID:");
+                    int otvID = scaner.nextInt();
+                    Employee[] getId = service.remove(otvID);
+                    Employee[] print2 = service.printEmployees(getId);
+                    break;
+                }
+
+                case 7: {
+                    int allMoney = service.calculateSalaryAndBonus();
+                    System.out.println("Для выплаты зараплат всм сотрудникам в этом месяце требуется - " + allMoney + "$");
+                    break;
+                }
+
+                case 8: {
+                    System.out.println("Пока :) ");
+                    flag=false;
+                    break;
+                }
+
+                default: {
+                    break;
+                }
+            }
+        }
+
     }
 }

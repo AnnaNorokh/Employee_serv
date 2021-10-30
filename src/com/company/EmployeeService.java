@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class EmployeeService {
 
@@ -12,6 +13,18 @@ public class EmployeeService {
     }
 
    //public EmployeeService() {   }
+
+   public static void printEmployees(Employee employee) {
+       System.out.println("Employee{" +
+               "id=" +employee.id +
+               ", name='" + employee.name + '\'' +
+               ", age=" + employee.age +
+               ", salary=" + employee.salary +
+               ", gender='" + employee.gender + '\'' +
+               ", fixedBugs=" + employee.fixedBugs +
+               ", bonus=" + employee.bonus +
+               '}');
+   }
 
     Employee[] printEmployees(Employee[] employees) {
 
@@ -27,13 +40,15 @@ public class EmployeeService {
                         '}');
 
         }
+
         return employees;
     }
 
-    Employee getByName(String name) {
+    Employee getByName(String name)  {
+
         for (int i = 0; i < employees.length; i++) {
             Employee currentEmp = employees[i];
-            if(currentEmp.name == name){
+            if(currentEmp.name.equals(name)){
                 return currentEmp;
             }
         }
@@ -48,6 +63,7 @@ public class EmployeeService {
                 return currentEmp;
             }
         }
+
         System.out.println("Сотрудника с таким id не существует");
         return null;
     }
@@ -61,41 +77,84 @@ public class EmployeeService {
         }
         return allMoney;
     }
-    /*void deleteById(long id) {
-        for (long i =  id; i < employees.length-1; i++) {
-            //Employee currentEmp = employees[(int) i];
-            employees[(int) i]=employees[(int) i++];
-            System.out.println("1");
-        }
 
 
+    Employee[] remove(long id) {
 
-      //  System.out.println("Сотрудника с таким id не существует");
-        //return null;
-    }
-   Employee sortEmployees(Employee[] employees) {
-        return Arrays.sort(employees, new Comparator<Employee>() {
-            public int compare(Employee emp1, Employee emp2) {
-                return emp1.toString().compareTo(emp2.toString());
+        for (long i = id; i < employees.length - 1; i++) {
+            Employee currentEmp = employees[(int) i];
+            if (currentEmp.id == id) {
+                System.out.println("удален: "+currentEmp+"\n");
+                Employee[] arrNew = new Employee[employees.length - 1];
+                int remainingElements = employees.length - ( (int)id + 1 );
+                System.arraycopy(employees, 0, arrNew, 0, (int)id);
+                System.arraycopy(employees, (int)id + 1, arrNew, (int)id, remainingElements);
+                return arrNew;
             }
+
         }
+        System.out.println("Сотрудника с таким id не существует");
         return null;
     }
-    */
 
+    Employee[] edit(long id) {
+        Scanner scaner = new Scanner(System.in);
+        Scanner scaner1 = new Scanner(System.in);
+        for (long i = id; i < employees.length - 1; i++) {
+            Employee currentEmp = employees[(int) i];
+            if (currentEmp.id == id) {
 
-    /*
-    Employee[] sortByName(Employee employee){
+                System.out.println("Изменяемый сотрудник: ");
+                printEmployees(currentEmp);
+
+                System.out.println("Введите новое Имя: ");
+                String newName = scaner1.nextLine();
+                currentEmp.setName(newName);
+
+                System.out.println("Введите новый возраст: ");
+                int newAge = scaner.nextInt();
+                currentEmp.setAge(newAge);
+
+                System.out.println("Введите новую зарплату: ");
+                int newSalary= scaner.nextInt();
+                currentEmp.setSalary(newSalary);
+
+                System.out.println("Введите новый пол: ");
+                String newGend= scaner1.nextLine();
+                currentEmp.setGender(newGend);
+
+                System.out.println("Введите новое количество багов: ");
+                int newFixB= scaner.nextInt();
+                currentEmp.setFixedBugs(newFixB);
+
+                int def = currentEmp.getDefaultBugRate();
+                currentEmp.setBonus(newFixB,def);
+
+                return employees;
+            }
+
+        }
+        System.out.println("Сотрудника с таким id не существует");
+        return null;
+    }
+
+    Employee[] sortByName() {
+
+        Arrays.sort(employees, Comparator.comparing(Employee::getName));
+        return employees;
+
+        }
+
+    Employee[] sortByNameAndSalary() {
+
+        Arrays.sort(employees, Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary));
+        return employees;
 
     }
-    Employee[] sortByNameAndSalary(Employee employee) {
 
-    }
-    Employee edit(Employee employee) {
-    }
-    Employee remove(long id){
 
-    }
-    */
+
+
+
 
 }
