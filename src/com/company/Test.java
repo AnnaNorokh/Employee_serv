@@ -1,24 +1,35 @@
 package com.company;
 import java.util.Scanner;
-/*
 
-Использовать класс Test для создания объекта EmploeeService и тестирования описаных выше методов.
-*/
 public class Test {
 
     public static void main(String[] args) throws Exception{
 
+        EmployeeTest test = new EmployeeTest();
         EmployeeFactory employeesFactory = new EmployeeFactory();
         Employee[] employees = employeesFactory.generateRandEmployees(11);//генерация
 
         EmployeeService service = new EmployeeService(employees);
+
+
+        System.out.println("=========================Tests===============================");
+        System.out.println("=============================================================");
+        test.testEmployFactory();
+        test.getByNameTest();
+        test.getByIdTest();
+        test.calculateSalaryAndBonusTest();
+        test.editTest();
+        test.removeTest();
+        test.sortByNameTest();
+        test.sortByNameAndSalaryTest();
+        System.out.println("=============================================================");
+        System.out.println("==========================END================================");
+
+
         Employee[] printEmp = service.printEmployees(employees);
-
-
         printMenu(employees);
+
         System.out.println();
-
-
     }
 
     public static void printEmployee(Employee employee) {

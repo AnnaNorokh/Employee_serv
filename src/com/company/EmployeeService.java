@@ -6,15 +6,13 @@ import java.util.Scanner;
 
 public class EmployeeService {
 
-    Employee[] employees;
+    Employee[] employees ;
 
     public EmployeeService(Employee[] employees) {
         this.employees = employees;
     }
 
-   //public EmployeeService() {   }
-
-   public static void printEmployees(Employee employee) {
+   public void printEmployees(Employee employee) {
        System.out.println("Employee{" +
                "id=" +employee.id +
                ", name='" + employee.name + '\'' +
@@ -26,7 +24,7 @@ public class EmployeeService {
                '}');
    }
 
-    Employee[] printEmployees(Employee[] employees) {
+    public Employee[] printEmployees(Employee[] employees) {
 
         for(Employee employee : employees ){
                 System.out.println("Employee{" +
@@ -38,9 +36,7 @@ public class EmployeeService {
                         ", fixedBugs=" + employee.fixedBugs +
                         ", bonus=" + employee.bonus +
                         '}');
-
         }
-
         return employees;
     }
 
@@ -80,9 +76,10 @@ public class EmployeeService {
 
 
     Employee[] remove(long id) {
-
         for (long i = id; i < employees.length - 1; i++) {
             Employee currentEmp = employees[(int) i];
+
+
             if (currentEmp.id == id) {
                 System.out.println("удален: "+currentEmp+"\n");
                 Employee[] arrNew = new Employee[employees.length - 1];
