@@ -1,4 +1,7 @@
 package com.company;
+
+import All_employees.Employee;
+
 import java.util.Random;
 
 public class EmployeeFactory {

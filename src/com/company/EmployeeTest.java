@@ -1,5 +1,7 @@
 package com.company;
 
+import All_employees.Employee;
+
 public class EmployeeTest {
 
     EmployeeFactory employeeFactory = new EmployeeFactory();

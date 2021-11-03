@@ -1,4 +1,4 @@
-package com.company;
+package All_employees;
 
 public class Employee {
     public long id;
@@ -11,7 +11,7 @@ public class Employee {
     public int bonus;
 
 
-    Employee(long id,String  name,int age,int salary,String gender,int fixedBugs) {
+    public Employee(long id,String  name,int age,int salary,String gender,int fixedBugs) {
         this.id = id;
         this.name = name;
         this.age = age;

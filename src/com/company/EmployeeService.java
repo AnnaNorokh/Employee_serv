@@ -1,5 +1,7 @@
 package com.company;
 
+import All_employees.Employee;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
