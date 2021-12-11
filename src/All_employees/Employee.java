@@ -6,18 +6,13 @@ public class Employee {
     public int age;
     public int salary;
     public String gender;
-    public int fixedBugs;
-    public int defaultBugRate;
-    public int bonus;
 
-
-    public Employee(long id,String  name,int age,int salary,String gender,int fixedBugs) {
+    public Employee(long id,String  name,int age,int salary,String gender) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
         this.gender = gender;
-        this.fixedBugs = fixedBugs;
     }
 
     public Employee(){}
@@ -62,31 +57,6 @@ public class Employee {
         this.gender = gender;
     }
 
-    public int getFixedBugs() {
-        return fixedBugs;
-    }
-
-    public void setFixedBugs(int fixedBugs) {
-        this.fixedBugs = fixedBugs;
-    }
-
-    public int getDefaultBugRate() {
-        return defaultBugRate;
-    }
-
-    public void setDefaultBugRate() {
-        this.defaultBugRate = 3;
-    }
-    public int getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(int fixedBugs,int defaultBugRate) {
-        this.bonus = fixedBugs*defaultBugRate;
-    }
-
-
-
     static void print(Employee employee) {
         System.out.println("Employee{" +
                 "id=" + employee.id +
@@ -94,9 +64,15 @@ public class Employee {
                 ", age=" + employee.age +
                 ", salary=" + employee.salary +
                 ", gender='" + employee.gender + '\'' +
-                ", fixedBugs=" + employee.fixedBugs +
-                ", bonus=" + employee.bonus +
                 '}');
+    }
+
+    public String toString() {
+        return "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", gender='" + gender + '\'';
     }
 
 }

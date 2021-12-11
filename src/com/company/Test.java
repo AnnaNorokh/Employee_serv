@@ -3,14 +3,18 @@
 Developer (id, name, age, salary, gender, fixedBugs)
 Manager (id, name, age, salary, gender)
 Designer (id, name, age, salary, gender, rate, workedDays)
+
 ставка -> salary
-Расчет итоговой зарплаты для Developer происходит по формуле:
-(ставка + fixedBugs * коэффициент) * (randomBoolean ? 2 : 0)
+Расчет итоговой зарплаты для
+Developer происходит по формуле: (ставка + fixedBugs * коэффициент) * (randomBoolean ? 2 : 0)
+
 Итоговой зарплатой Manager-а является его ставка:
-Расчет итоговой зарплаты для Designer происходит по формуле:
-ставка + rate * workedDays
+
+Расчет итоговой зарплаты для Designer происходит по формуле: ставка + rate * workedDays
+
 Разработать класс EmployeeService который будет хранить всех сотрудников предприятия в массиве.
 Класс должен содержать методы для работы с сотрудниками (которые представлены массивом внутри класса):
+
 void printEmployees() -> вывод на экран информации о сотрудниках
 double calculateSalaryAndBonus() -> возвращает количество денег необходимое для выплаты зарплат для всех сотрудников в этом месяце
 Employee getById(long) -> возвращает сотрудника по заданному id
@@ -20,6 +24,7 @@ Employee[] sortByNameAndSalary() -> возвращают отсортирова�
 Employee edit(Employee) -> находит сотрудника по id, и подменяет информацию о нем на новую. Старую версию сотрудника метод возвращает.
 Employee remove(long id) -> находит сотрудника по id, и удаляет его из массива. Возвращает ссылку на удаленного сотрудника. Массив сокращается на 1.
 void add(Employee) -> Добавляет нового сотрудника. Массив увеличивается на 1.
+
 Написать класс EmployeeFactory с методом:
 generateEmployees(size) -> генерирует случайным образом заданое количество сотрудников
 Использовать класс Test для создания объекта EmploeeService и тестирования описаных выше методов.
@@ -38,11 +43,11 @@ public class Test {
 
         EmployeeTest test = new EmployeeTest();
         EmployeeFactory employeesFactory = new EmployeeFactory();
-        Employee[] employees = employeesFactory.generateRandEmployees(11);//генерация
+        Employee[] employees = employeesFactory.generateRandEmployees(16);//генерация
 
-        EmployeeService service = new EmployeeService(employees);
+        //EmployeeService service = new EmployeeService(employees);
 
-
+/*
         System.out.println("=========================Tests===============================");
         System.out.println("=============================================================");
         test.testEmployFactory();
@@ -55,23 +60,41 @@ public class Test {
         test.sortByNameAndSalaryTest();
         System.out.println("=============================================================");
         System.out.println("==========================END================================");
+*/
 
+        Manager manager = new Manager();
+        manager = employeesFactory.generateRandManager(6);
+        printEmployee(manager);
 
-        Employee[] printEmp = service.printEmployees(employees);
-        printMenu(employees);
+        System.out.println("lol");
+
+        Employee[] printEmp = printEmployee(employees);
+        //printMenu(employees);
 
         System.out.println();
     }
 
-    public static void printEmployee(Employee employee) {
+    public static Employee[] printEmployee(Employee[] employees) {
+
+        for(Employee employee : employees ){
+            System.out.println("Employee{" +
+                    "id=" + employee.id +
+                    ", name='" + employee.name + '\'' +
+                    ", age=" + employee.age +
+                    ", salary=" + employee.salary +
+                    ", gender='" + employee.gender + '\'' +
+                    '}');
+        }
+        return employees;
+    }
+
+    public static void printEmployee(Employee employee ) {
         System.out.println("Employee{" +
                 "id=" +employee.id +
                 ", name='" + employee.name + '\'' +
                 ", age=" + employee.age +
                 ", salary=" + employee.salary +
                 ", gender='" + employee.gender + '\'' +
-                ", fixedBugs=" + employee.fixedBugs +
-                ", bonus=" + employee.bonus +
                 '}');
     }
     public static void printMenu(Employee[] employees) {

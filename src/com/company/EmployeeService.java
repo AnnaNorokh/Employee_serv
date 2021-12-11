@@ -21,8 +21,6 @@ public class EmployeeService {
                ", age=" + employee.age +
                ", salary=" + employee.salary +
                ", gender='" + employee.gender + '\'' +
-               ", fixedBugs=" + employee.fixedBugs +
-               ", bonus=" + employee.bonus +
                '}');
    }
 
@@ -35,8 +33,6 @@ public class EmployeeService {
                         ", age=" + employee.age +
                         ", salary=" + employee.salary +
                         ", gender='" + employee.gender + '\'' +
-                        ", fixedBugs=" + employee.fixedBugs +
-                        ", bonus=" + employee.bonus +
                         '}');
         }
         return employees;
@@ -63,6 +59,7 @@ public class EmployeeService {
         }
 
         System.out.println("Сотрудника с таким id не существует");
+
         return null;
     }
 
@@ -70,7 +67,7 @@ public class EmployeeService {
         int allMoney = 0;
         for (int i = 0; i < employees.length; i++) {
            Employee employee = employees[i];
-           allMoney += employee.bonus;
+           //allMoney += employee.bonus;
            allMoney += employee.salary;
         }
         return allMoney;
@@ -124,10 +121,10 @@ public class EmployeeService {
 
                 System.out.println("Введите новое количество багов: ");
                 int newFixB= scaner.nextInt();
-                currentEmp.setFixedBugs(newFixB);
+                //currentEmp.setFixedBugs(newFixB);
 
-                int def = currentEmp.getDefaultBugRate();
-                currentEmp.setBonus(newFixB,def);
+                //int def = currentEmp.getDefaultBugRate();
+                //currentEmp.setBonus(newFixB,def);
 
                 return employees;
             }

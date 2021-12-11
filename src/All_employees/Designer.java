@@ -1,6 +1,6 @@
 package All_employees;
 
-public class Designer {
+public class Designer extends  Employee{
     public long id;
     public String name;
     public int age;

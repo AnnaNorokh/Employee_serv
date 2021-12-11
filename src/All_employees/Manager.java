@@ -1,22 +1,15 @@
 package All_employees;
 
 
-public class Manager {
+public class Manager extends Employee {
     public long id;
     public String name;
     public int age;
     public int salary;
     public String gender;
 
-
-
-
     public Manager(long id, String  name, int age, int salary, String gender) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
-        this.gender = gender;
+        super(id,name,age,salary,gender);
 
     }
 
@@ -62,11 +55,14 @@ public class Manager {
         this.gender = gender;
     }
 
-
-
+    public String toString() {
+        return "Manager{" +
+                super.toString() +
+                '}';
+    }
 
     static void print(Manager manager) {
-        System.out.println("Employee{" +
+        System.out.println("Manager{" +
                 "id=" + manager.id +
                 ", name='" + manager.name + '\'' +
                 ", age=" + manager.age +
